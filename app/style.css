@@ -1,0 +1,174 @@
+body {
+    background-color: black;
+    color: lightgray;
+    width: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+@font-face {
+    font-family: "digital-7";
+    src: url('digital-7.ttf');
+}
+
+.center-block {
+    display: inline-block;
+    height: 50vh;
+    width: 50%;
+    margin: 50px auto;
+    margin-bottom: 10px;
+    font-size: 1.5em;
+}
+
+.label-container {
+    height: 100%;
+    width: 20%;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: right;
+    vertical-align: bottom;
+}
+
+.label {
+    display: inline-block;
+    margin: 0 5px;
+}
+
+.data-container {
+    height: 100%;
+    width: 35%;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: left;
+    vertical-align: bottom;
+}
+
+.data {
+    font-family: digital-7;
+    display: inline-block;
+    margin: 0 5px;
+    font-size: 1.5em;
+}
+
+.entry-container {
+    display: inline-block;
+    width: 25%;
+    text-align: left;
+}
+
+.entry {
+    height: 0.9em;
+}
+
+input.entry {
+    display: inline-block;
+    width: 90%;
+    font-family: digital-7;
+    margin: 5px 5px;
+    font-size: 1.0em;
+}
+
+.btn-container {
+    height: 100%;
+    width: 20%;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: left;
+    vertical-align: bottom;
+}
+
+.btn-container > button {
+    display: inline-block;
+    margin: 0 5px;
+    font-size: 1.0em;
+}
+
+.phases-container {
+    font-size: 1.2em;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: 90%;
+    margin: 50px auto;
+    justify-content: space-between;
+}
+
+.phase-data-container {
+    display: inline-block;
+    width: 15%;
+}
+
+.phase-name {
+    display: block;
+    max-width: 50%;
+    margin: 5px auto;
+}
+
+.phase-label {
+    display: inline-block;
+    width: 50%;
+    text-align: right;
+    margin: 5px 0;
+}
+
+.phase-data {
+    display: inline-block;
+    width: 45%;
+    text-align: left;
+    margin: 5px 0;
+}
+
+.phase-entry {
+    display: inline-block;
+    width: 80%;
+    font-size: 1.0em;
+}
+
+.phase-btn {
+    display: block;
+    width: 45%;
+    font-size: 0.9em;
+    margin: 5px auto;
+}
+
+.debug-window-container {
+    display: inline-block;
+    width: 40%;
+    margin: 0 auto;
+}
+
+.debug-window {
+    display: inline-block;
+    background-color: gray;
+    color: black;
+    font-size: 12pt;
+    height: 10em;
+    width: 95%;
+    margin: 0 auto;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    /* scroll-behavior: smooth; */
+}
+
+.debug-window > p {
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin: 0 5px;
+}
+
+.overtemp-indicator {
+    display: inline-block;
+    background-color: gray;
+    height: 1em;
+    width: 1em;
+    border-radius: 50%;
+}
+
+.enabled-indicator {
+    display: inline-block;
+    background-color: gray;
+    height: 1em;
+    width: 1em;
+    border-radius: 50%;
+}

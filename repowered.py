@@ -1,5 +1,10 @@
 import serial
 import serial.tools.list_ports
+import sys
+import json
+import time
+import threading
+import queue
 
 def list_comports():
 	"""Returns a list of Virtual Com Ports on the system."""
@@ -71,3 +76,45 @@ class ElectronicLoad(serial.Serial):
 
     def set_current(self, current):
         self.write(":SOUR:CURR {:.6f}\n".format(current).encode(encoding=self.encoding))
+
+
+class StdinThread(threading.Thread):
+    def __init__(self, q):
+        threading.Thread.__init__(self)
+        self.q = q
+        self.done = False
+
+    def run(self):
+        while not self.done:
+            cmd = input()
+            obj = json.loads(cmd)
+            q.put(obj)
+
+
+if __name__ == "__main__":
+    load = ElectronicLoad(sys.argv[1])
+    q = queue.Queue(maxsize=1024)
+
+    stdin_thread = StdinThread(q)
+    stdin_thread.start()
+
+    done = False
+    while not done:
+        while not q.empty():
+            try:
+                cmd = q.get_nowait()
+                load.set_current(cmd['current'])
+                q.task_done()
+            except KeyError:
+                load.set_current(0.0)
+        
+        rpy_obj = {}
+        rpy_obj['voltage'] = load.get_voltage()
+        rpy_obj['current'] = load.get_current()
+        rpy_obj['resistance'] = load.get_resistance()
+        rpy_obj['power'] = load.get_power()
+        
+        print(json.dumps(rpy_obj))
+        sys.stdout.flush()
+
+        time.sleep(0.5)

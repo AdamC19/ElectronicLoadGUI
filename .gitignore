@@ -1,2 +1,8 @@
 __pycache__/
 *.pyc
+venv/
+
+node_modules/
+bin/
+build/
+_old/

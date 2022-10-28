@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Electronic Load Dashboard</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="control_scripts.js"></script>
+    </head>
+
+    <body>
+        <div  ng-app="loadApp" ng-controller="loadAppCtl">
+            <div class="center-block">
+                <span class="label-container">
+                    <span class="label">Connected:</span> 
+                    <br />
+                    <span class="label">V<sub>IN</sub>:</span> 
+                    <br />
+                    <span class="label">I<sub>IN</sub>:</span> 
+                    <br />
+                    <span class="label">Resistance:</span> 
+                    <br />
+                    <span class="label">P<sub>IN</sub>:</span> 
+                    <br />
+                    <span class="label">I<sub>SET</sub>:</span> 
+                </span>
+                
+                <span class="data-container">
+                    <span class="data" id="connection-status" ng-style="load.connected_style">{{load.connected}}</span> 
+                    <br />
+                    <span class="data" id="voltage">{{load.voltage}}</span> 
+                    <br />
+                    <span class="data" id="current">{{load.current}}</span> 
+                    <br />
+                    <span class="data" id="current">{{load.resistance}}</span> 
+                    <br />
+                    <span class="data" id="current">{{load.power}}</span> 
+                    <br />
+                    <span class="data"> <input class="entry" id="iset-entry" type="text" ng-model="load.current_setpt"> </span> 
+                </span>
+    
+                <span class="btn-container">
+                    <span class="label"> </span> 
+                    <br />
+                    <span class="label"> </span> 
+                    <br />
+                    <span class="label"> </span> 
+                    <br />
+                    <span class="label"> </span> 
+                    <br />
+                    <span class="label"> </span> 
+                    <br />
+                    <button id="set-total-ilimit-btn" type="submit" ng-click="setCurrent()">SET</button> 
+                </span>
+                
+            </div>
+        </div>
+    </body>
+</html>
